@@ -47,7 +47,7 @@ const sendOtpEmail = async (email, otp, name) => {
 const sendVerificationEmail = async (email, token, name) => {
   const verificationUrl = `${process.env.BASE_URL}/api/auth/verify-email?token=${token}`;
   const mailOptions = {
-    from: '"Renuka D.T.P Printers" <renuka19135505@gmail.com>',
+    from: `"Renuka D.T.P Printers" <${process.env.EMAIL_USER}>`,
     to: email,
     subject: "✅ Verify Your Email - Renuka D.T.P Printers",
     html: `

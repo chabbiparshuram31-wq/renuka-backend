@@ -100,7 +100,7 @@ router.put("/orders/:id", isAdmin, async (req, res) => {
 // GET wholesale pending requests
 router.get("/wholesale", isAdmin, async (req, res) => {
   try {
-    const requests = await User.find({ role: "wholesale", wholesaleStatus: "pending" });
+    const requests = await User.find({ role: "wholesale" });
     res.json(requests);
   } catch (err) {
     res.status(500).json({ message: "Server error" });

@@ -21,7 +21,9 @@ router.get("/stats", isAdmin, async (req, res) => {
     const totalCustomers = await User.countDocuments();
     const totalProducts = await Product.countDocuments();
     const orders = await Order.find();
-    const revenue = orders.reduce((sum, o) => sum + (o.totalAmount || 0), 0);
+   const revenue = orders
+  .filter(o => o.status !== "cancelled")
+  .reduce((sum, o) => sum + (o.totalAmount || 0), 0);
 
     res.json({
       totalOrders,
